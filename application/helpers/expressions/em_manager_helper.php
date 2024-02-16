@@ -6800,6 +6800,7 @@ class LimeExpressionManager
      */
     public static function AggregateGroupStart($anonymized = false, $surveyid = null, $forceRefresh = false)
     {
+        throw new Exception("AggregateGroupStart started");
         $LEM =& LimeExpressionManager::singleton();
         $LEM->setVariableAndTokenMappingsForExpressionManager($surveyid, $forceRefresh, $anonymized);
         $LEM->ProcessAllNeededRelevance();  // TODO - what if this is called using Survey or Data Entry format?
