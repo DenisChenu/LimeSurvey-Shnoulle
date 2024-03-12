@@ -62,8 +62,14 @@ class CoreQuestionAttributeProvider extends QuestionAttributeProvider
     {
         /** @var array<string,array> An array of question attributes */
         $attributes = [];
-
+        static $check = [];
         if (file_exists($xmlFilePath)) {
+            if (isset($check[$xmlFilePath])) {
+                $check[$xmlFilePath]++;
+            } else {
+                $check[$xmlFilePath] = 1;
+            }
+            tracevar($check);
             $extensionConfig = \ExtensionConfig::loadFromFile($xmlFilePath);
             $xmlAttributes = $extensionConfig->getNodeAsArray('generalattributes');
             // if only one attribute, then it doesn't return numeric index
